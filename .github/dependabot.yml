@@ -1,0 +1,64 @@
+version: 2
+updates:
+  # npm 패키지 업데이트
+  - package-ecosystem: 'npm'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
+      day: 'monday'
+      time: '03:00'
+    open-pull-requests-limit: 10
+    groups:
+      development:
+        patterns:
+          - '@types/node'
+          - '@tsconfig/*'
+          - 'oxlint'
+          - 'oxfmt'
+          - 'vitest*'
+          - '@vitest/*'
+          - 'typescript*'
+          - 'vite*'
+          - 'react-docgen-typescript'
+          - '@microsoft/api-extractor'
+        update-types:
+          - 'minor'
+          - 'patch'
+      react:
+        patterns:
+          - 'react'
+          - 'react-dom'
+          - '@types/react'
+          - '@types/react-dom'
+          - '@vitejs/plugin-react'
+          - '@testing-library/*'
+        update-types:
+          - 'minor'
+          - 'patch'
+    ignore:
+      # 라이브러리 테스트는 지원 하한인 React 18로 돌린다
+      - dependency-name: 'react'
+        update-types: ['version-update:semver-major']
+      - dependency-name: 'react-dom'
+        update-types: ['version-update:semver-major']
+      - dependency-name: '@types/react'
+        update-types: ['version-update:semver-major']
+      - dependency-name: '@types/react-dom'
+        update-types: ['version-update:semver-major']
+      # TS 7은 컴파일러 API가 없어 vite-plugin-dts, react-docgen-typescript용으로 6.x 유지 (타입 검사는 typescript7 별칭)
+      - dependency-name: 'typescript'
+        update-types: ['version-update:semver-major']
+    commit-message:
+      prefix: 'chore'
+      include: 'scope'
+
+  # GitHub Actions 업데이트
+  - package-ecosystem: 'github-actions'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
+      day: 'monday'
+      time: '03:00'
+    commit-message:
+      prefix: 'ci'
+      include: 'scope'

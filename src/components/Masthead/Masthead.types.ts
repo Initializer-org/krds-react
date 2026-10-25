@@ -1,0 +1,5 @@
+import { HTMLAttributes } from 'react'
+export interface MastheadProps extends Omit<HTMLAttributes<HTMLDivElement>, 'children'> {
+  text: string
+  className?: string
+}

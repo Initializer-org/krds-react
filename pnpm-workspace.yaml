@@ -1,0 +1,3 @@
+# pnpm 설정 (pnpm 11부터 .npmrc 대신 여기서 관리)
+allowBuilds:
+  esbuild: true

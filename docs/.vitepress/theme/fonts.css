@@ -1,0 +1,22 @@
+/* krds-react CSS는 글꼴(Pretendard GOV)을 지정만 하고 @font-face를 넣지 않아, 문서 사이트에서만 KRDS Vue와 같은 글꼴 파일을 넣는다 */
+@font-face {
+  font-family: 'Pretendard GOV';
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url('./fonts/PretendardGOV-Regular.subset.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Pretendard GOV';
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  src: url('./fonts/PretendardGOV-Medium.subset.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Pretendard GOV';
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url('./fonts/PretendardGOV-Bold.subset.woff2') format('woff2');
+}

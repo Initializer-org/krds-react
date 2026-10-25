@@ -1,0 +1,15 @@
+export { SideNavigation } from './SideNavigation'
+export type {
+  SideNavigationItemProps,
+  SideNavigationLinkProps,
+  SideNavigationMenuProps,
+  SideNavigationPopupMenuProps,
+  SideNavigationPopupProps,
+  SideNavigationPopupTitleProps,
+  SideNavigationPopupToggleProps,
+  SideNavigationProps,
+  SideNavigationSubItemProps,
+  SideNavigationSubMenuProps,
+  SideNavigationTitleProps,
+  SideNavigationToggleProps
+} from './SideNavigation.types'

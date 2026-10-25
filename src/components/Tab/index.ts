@@ -1,0 +1,2 @@
+export { Tab, TabList, TabTrigger, TabPanel, TabContent } from './Tab'
+export type { TabProps, TabListProps, TabTriggerProps, TabPanelProps, TabContentProps, TabVariant, TabSize } from './Tab.types'

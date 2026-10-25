@@ -1,0 +1,2 @@
+export { Footer } from './Footer'
+export type { FooterBottomLink, FooterLink, FooterProps, FooterQuickLink, FooterSocialLink } from './Footer.types'

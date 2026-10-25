@@ -1,0 +1,2 @@
+export { Identifier } from './Identifier'
+export type { IdentifierProps } from './Identifier.types'

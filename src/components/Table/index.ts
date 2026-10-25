@@ -1,0 +1,12 @@
+export { Table } from './Table'
+export type {
+  TableProps,
+  TableCaptionProps,
+  TableTheadProps,
+  TableTbodyProps,
+  TableTrProps,
+  TableThProps,
+  TableTdProps,
+  TableColgroupProps,
+  TableColProps
+} from './Table.types'

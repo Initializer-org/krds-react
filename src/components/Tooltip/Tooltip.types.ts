@@ -1,0 +1,7 @@
+import { ReactNode } from 'react'
+export interface TooltipProps {
+  children: ReactNode
+  text: string
+  variant?: 'horizontal' | 'vertical' | 'box'
+  className?: string
+}

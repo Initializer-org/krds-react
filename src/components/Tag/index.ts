@@ -1,0 +1,2 @@
+export { Tag, TagWrap } from './Tag'
+export type { TagProps, TagSize, TagWrapProps } from './Tag.types'

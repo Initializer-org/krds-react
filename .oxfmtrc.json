@@ -1,0 +1,11 @@
+{
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  "semi": false,
+  "singleQuote": true,
+  "trailingComma": "none",
+  "printWidth": 140,
+  "arrowParens": "avoid",
+  "vueIndentScriptAndStyle": true,
+  "sortPackageJson": false,
+  "ignorePatterns": ["pnpm-lock.yaml", "public/index.css", "docs/.vitepress/cache", "docs/.vitepress/dist"]
+}
