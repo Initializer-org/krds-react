@@ -15,7 +15,7 @@ import './style.css'
 
 export default {
   extends: DefaultTheme,
-  // KRDS Vue ↔ React 전환(상단 메뉴가 햄버거로 접히는 모바일에서도 보이게), 없는 페이지 안내
+  // KRDS Vue · React · Angular 전환(상단 메뉴가 햄버거로 접히는 모바일에서도 보이게), 없는 페이지 안내
   Layout: () =>
     h(DefaultTheme.Layout, null, {
       'nav-bar-content-before': () => h(FrameworkSwitch, { current: 'react', mobile: true }),
