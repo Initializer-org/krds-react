@@ -16,5 +16,3 @@ npm run build   # 타입 검사(tsc) 후 빌드
 - `pnpm-workspace.yaml`: pnpm으로 설치할 때 '나온 지 하루 안 된 버전 거부' 정책에서 `@krds.ui/react`만 빼, 방금 배포된 버전도 바로 받음
 
 krds-react CSS는 글꼴로 Pretendard GOV를 지정하지만 글꼴 파일은 넣지 않으므로, 같은 글꼴로 보려면 애플리케이션에서 따로 불러와야 합니다.
-
-저장소 CI는 라이브러리를 패키지 파일로 만들어 이 예제에 설치한 뒤 빌드해, npm에 올라갈 패키지를 배포 전에 검증합니다.

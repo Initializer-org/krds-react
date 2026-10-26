@@ -19,8 +19,8 @@ hero:
       link: https://github.com/Initializer-org/krds-react
 
 features:
-  - title: 공식 코드 그대로
-    details: 공식 krds-react의 원본 저장소가 공개돼 있지 않아, npm에 함께 배포된 source map에서 코드를 복원했습니다. 빌드에 필요한 최소한만 고쳤습니다.
+  - title: 공식 krds-react 그대로
+    details: 컴포넌트·props·마크업·CSS가 공식 krds-react 1.1.1과 같습니다.
   - title: 접근성 자동 검사
     details: 이 문서의 모든 예제를 실제 브라우저에서 axe-core로 검사합니다. 원본에서 찾은 위반은 알려진 문제로 정리했습니다. 고대비 모드를 지원합니다.
   - title: Next.js App Router
