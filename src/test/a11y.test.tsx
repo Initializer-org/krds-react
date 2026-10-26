@@ -4,15 +4,9 @@
 import type { ComponentType } from 'react'
 import { describe, test } from 'vitest'
 import { page } from 'vitest/browser'
-import { expectNoA11yViolations, render, type A11yRule } from './utils'
+import { expectNoA11yViolations, render } from './utils'
 
 const demos = import.meta.glob<{ default: ComponentType }>('../../docs/components/demos/*.tsx', { eager: true })
-
-/** 원본 krds-react 유래 위반 제외 (README "알려진 문제" 참고) */
-const knownViolations: Record<string, A11yRule[]> = {
-  LanguageSwitcher: [{ id: 'label-content-name-mismatch', enabled: false }],
-  Tooltip: [{ id: 'label-content-name-mismatch', enabled: false }]
-}
 
 /** 닫힌 상태로 렌더되는 예제는 열고 나서 검사 */
 const open: Record<string, () => Promise<void>> = {
@@ -25,7 +19,7 @@ describe('접근성 (axe)', () => {
     test(name, async () => {
       render(<Demo />)
       await open[name]?.()
-      await expectNoA11yViolations(knownViolations[name])
+      await expectNoA11yViolations()
     })
   }
 })

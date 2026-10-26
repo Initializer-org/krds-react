@@ -4,7 +4,7 @@
 import axe from 'axe-core'
 import { expect } from 'vitest'
 
-export { render } from '@testing-library/react'
+export { render, screen } from '@testing-library/react'
 
 /** axe 규칙 설정 (원본 krds-react 유래 위반을 요소 단위로 제외할 때 selector 지정) */
 export interface A11yRule {

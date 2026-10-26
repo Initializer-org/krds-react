@@ -224,7 +224,7 @@ const Tooltip = forwardRef<HTMLElement, TooltipProps>(({ children, text, variant
           onBlur: handleBlur,
           className: classNames('krds-tooltip', className, childElement.props.className),
           'data-tooltip': text,
-          'aria-labelledby': contentId
+          'aria-describedby': contentId
         })}
         <div
           ref={contentRef}
@@ -246,6 +246,7 @@ const Tooltip = forwardRef<HTMLElement, TooltipProps>(({ children, text, variant
               transform: position.isMobileSmall ? 'translateX(-50%)' : undefined
             })
           }}
+          role="tooltip"
           aria-hidden={!isOpen}
         >
           {text}
@@ -264,7 +265,8 @@ const Tooltip = forwardRef<HTMLElement, TooltipProps>(({ children, text, variant
         onBlur={handleBlur}
         className={classNames('krds-tooltip', className)}
         data-tooltip={text}
-        aria-labelledby={contentId}
+        aria-describedby={contentId}
+        type="button"
       >
         {children}
       </button>
@@ -288,6 +290,7 @@ const Tooltip = forwardRef<HTMLElement, TooltipProps>(({ children, text, variant
             transform: position.isMobileSmall ? 'translateX(-50%)' : undefined
           })
         }}
+        role="tooltip"
         aria-hidden={!isOpen}
       >
         {text}

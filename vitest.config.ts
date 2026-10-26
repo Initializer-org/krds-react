@@ -12,6 +12,10 @@ export default defineConfig({
       '@krds.ui/react': fileURLToPath(new URL('./src/index.ts', import.meta.url))
     }
   },
+  // 테스트 도중 새 의존성을 발견해 다시 묶으면 React가 두 벌 로드되므로(Invalid hook call) 처음부터 함께 묶는다
+  optimizeDeps: {
+    include: ['react', 'react/jsx-dev-runtime', 'react-dom', 'react-dom/client', 'react-dom/server']
+  },
   test: {
     include: ['src/**/*.test.{ts,tsx}'],
     setupFiles: ['src/test/setup.ts'],

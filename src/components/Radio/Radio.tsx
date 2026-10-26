@@ -1,6 +1,6 @@
 import { useUncontrolled } from '@/hooks/use-uncontrolled'
 import { classNames } from '@/utils'
-import React, { createContext, forwardRef, useContext, useMemo, useState } from 'react'
+import React, { createContext, forwardRef, useContext, useId, useMemo, useState } from 'react'
 import { RadioChipProps, RadioGroupContextType, RadioGroupProps, RadioProps } from './Radio.types'
 
 const RadioGroupContext = createContext<RadioGroupContextType | undefined>(undefined)
@@ -25,7 +25,9 @@ const Radio = forwardRef<HTMLInputElement, RadioProps>(
 
     const radioGroup = useContext(RadioGroupContext)
 
-    const autoId = useMemo(() => id ?? `radio-${Math.random().toString(36).substr(2, 9)}`, [id])
+    // 렌더할 때마다 Math.random()으로 만들면 서버 렌더링과 브라우저의 id가 달라지므로 useId
+    const generatedId = useId()
+    const autoId = id ?? generatedId
 
     const isInGroup = !!radioGroup
     const groupValue = radioGroup?.value
@@ -107,7 +109,9 @@ const RadioChip = forwardRef<HTMLInputElement, RadioChipProps>(
 
     const radioGroup = useContext(RadioGroupContext)
 
-    const autoId = useMemo(() => id ?? `radio-chip-${Math.random().toString(36).substr(2, 9)}`, [id])
+    // 렌더할 때마다 Math.random()으로 만들면 서버 렌더링과 브라우저의 id가 달라지므로 useId
+    const generatedId = useId()
+    const autoId = id ?? generatedId
 
     const isInGroup = !!radioGroup
     const groupValue = radioGroup?.value
