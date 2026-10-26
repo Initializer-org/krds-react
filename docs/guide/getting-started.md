@@ -58,7 +58,7 @@ krds-react CSS는 글꼴로 Pretendard GOV를 지정하지만 글꼴 파일은 �
 
 ## 요구사항
 
-- React `>=18.2.0` (라이브러리 테스트는 React 18로 돌립니다)
+- React `>=18.2.0`
 - ESM을 지원하는 번들러
 
 ## 알려진 문제
