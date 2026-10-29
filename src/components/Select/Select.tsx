@@ -1,5 +1,5 @@
 import { classNames } from '@/utils'
-import React, { forwardRef } from 'react'
+import React, { forwardRef, useId } from 'react'
 import { SelectProps } from './Select.types'
 import { useUncontrolled } from '@/hooks/use-uncontrolled'
 
@@ -26,6 +26,10 @@ const Select: React.FC<SelectProps> = forwardRef<HTMLSelectElement, SelectProps>
       defaultValue,
       onChange
     })
+
+    // id를 주지 않아도 레이블이 연결되도록 (원본은 id가 없으면 레이블이 연결되지 않았음)
+    const generatedId = useId()
+    const selectId = props.id ?? generatedId
 
     const selectClasses = classNames(
       variant === 'sorting' ? 'krds-form-select-sort' : 'krds-form-select',
@@ -59,7 +63,7 @@ const Select: React.FC<SelectProps> = forwardRef<HTMLSelectElement, SelectProps>
       <div className="form-group">
         {label && (
           <div className="form-tit">
-            <label htmlFor={props.id}>{label}</label>
+            <label htmlFor={selectId}>{label}</label>
           </div>
         )}
         <div className="form-conts">
@@ -69,6 +73,7 @@ const Select: React.FC<SelectProps> = forwardRef<HTMLSelectElement, SelectProps>
             value={_value}
             onChange={e => setValue(e.target.value)}
             {...props}
+            id={selectId}
             ref={ref}
           >
             {options.map(option => (

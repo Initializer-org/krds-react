@@ -13,7 +13,7 @@ import {
   ModalRootProps,
   ModalTriggerProps
 } from './Modal.types'
-import { ModalContext, useModalContext } from './ModalContext'
+import { ModalContext, ModalTitleContext, useModalContext } from './ModalContext'
 
 const Slot = React.forwardRef<any, { children?: React.ReactNode } & any>(({ children, ...props }, ref) => {
   if (React.isValidElement(children)) {
@@ -109,6 +109,12 @@ const ModalContent = forwardRef<HTMLDivElement, ModalContentProps>(({ className 
 
   const generatedId = useId()
   const sectionId = id || `krds-modal-${generatedId}`
+
+  // 대화상자 이름: 렌더된 Modal.Title을 aria-labelledby로 연결 (원본은 연결하지 않아 대화상자에 이름이 없었음)
+  const generatedTitleId = useId()
+  const [titleId, setTitleId] = useState<string>()
+  const titleContext = useMemo(() => ({ generatedTitleId, setTitleId }), [generatedTitleId])
+  const labelledBy = props['aria-labelledby'] ?? titleId
 
   const contentRef = useRef<HTMLDivElement | null>(null)
   const dialogRef = useRef<HTMLDivElement | null>(null)
@@ -309,13 +315,14 @@ const ModalContent = forwardRef<HTMLDivElement, ModalContentProps>(({ className 
         data-type={variant === 'default' ? undefined : variant}
         onClick={handleOverlayClick}
         {...props}
+        aria-labelledby={labelledBy}
       >
         <div
           className={classNames('modal-dialog', size === 'sm' && 'modal-sm', size === 'md' && 'modal-md', size === 'lg' && 'modal-lg')}
           ref={handleDialogMount}
         >
           <div className="modal-content" ref={handleContentMount}>
-            {children}
+            <ModalTitleContext.Provider value={titleContext}>{children}</ModalTitleContext.Provider>
             <ModalCloseIconButton />
           </div>
         </div>
@@ -331,20 +338,21 @@ const ModalHeader = forwardRef<HTMLDivElement, ModalHeaderProps>(({ children, ti
   const id = titleId
   return (
     <div className={classNames('modal-header', className)} {...props} ref={ref}>
-      {title ? (
-        <h2 id={id} className="modal-title">
-          {title}
-        </h2>
-      ) : (
-        children
-      )}
+      {title ? <ModalTitle id={id}>{title}</ModalTitle> : children}
     </div>
   )
 })
 ModalHeader.displayName = 'ModalHeader'
 
-const ModalTitle = forwardRef<HTMLHeadingElement, React.ComponentProps<'h2'>>(({ className = '', ...props }, ref) => {
-  return <h2 className={classNames('modal-title', className)} {...props} ref={ref} />
+const ModalTitle = forwardRef<HTMLHeadingElement, React.ComponentProps<'h2'>>(({ className = '', id, ...props }, ref) => {
+  const titleContext = React.useContext(ModalTitleContext)
+  const titleId = id ?? titleContext?.generatedTitleId
+  // 렌더되는 동안 대화상자(Modal.Content)의 이름으로 연결
+  useEffect(() => {
+    titleContext?.setTitleId(titleId)
+    return () => titleContext?.setTitleId(undefined)
+  }, [titleContext, titleId])
+  return <h2 id={titleId} className={classNames('modal-title', className)} {...props} ref={ref} />
 })
 ModalTitle.displayName = 'ModalTitle'
 

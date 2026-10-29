@@ -2,8 +2,22 @@
 
 KRDS React는 [KRDS(대한민국 정부 디자인 시스템)](https://www.krds.go.kr/html/site/index.html) 공식 React 패키지 [krds-react](https://www.npmjs.com/package/krds-react) 1.1.1(ISC)을 포팅한 컴포넌트 라이브러리입니다. 이 패키지는 **ESM 전용**이며 CommonJS `require()`는 지원하지 않습니다.
 
-::: warning 배포 전
-아직 npm에 배포하지 않았습니다. 저장소에서 `pnpm build`로 빌드해 씁니다.
+## 설치
+
+::: code-group
+
+```sh [pnpm]
+pnpm add @krds.ui/react
+```
+
+```sh [npm]
+npm install @krds.ui/react
+```
+
+```sh [yarn]
+yarn add @krds.ui/react
+```
+
 :::
 
 ## 스타일
@@ -63,4 +77,4 @@ krds-react CSS는 글꼴로 Pretendard GOV를 지정하지만 글꼴 파일은 �
 
 ## 알려진 문제
 
-원본 krds-react에서 온 접근성·React 관련 문제는 저장소 [README의 알려진 문제](https://github.com/Initializer-org/krds-react#알려진-문제)에 정리했습니다.
+원본 krds-react에서 고친 접근성 문제는 저장소 [README의 원본과 다른 점](https://github.com/Initializer-org/krds-react#원본과-다른-점), 아직 남은 문제는 [알려진 문제](https://github.com/Initializer-org/krds-react#알려진-문제)에 정리했습니다.

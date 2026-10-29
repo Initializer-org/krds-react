@@ -20,9 +20,9 @@ hero:
 
 features:
   - title: 공식 krds-react 그대로
-    details: 컴포넌트·props·마크업·CSS가 공식 krds-react 1.1.1과 같습니다.
+    details: 컴포넌트·props·CSS가 공식 krds-react 1.1.1과 같고, 원본의 접근성 문제를 고쳤습니다.
   - title: 접근성 자동 검사
-    details: 이 문서의 모든 예제를 실제 브라우저에서 axe-core로 검사합니다. 원본에서 찾은 위반은 알려진 문제로 정리했습니다. 고대비 모드를 지원합니다.
+    details: 이 문서의 모든 예제를 실제 브라우저에서 axe-core로 검사하고, axe로 드러나지 않는 레이블 연결·이름은 회귀 테스트로 확인합니다. 고대비 모드를 지원합니다.
   - title: Next.js App Router
     details: 빌드 결과에 "use client"를 넣어 서버 컴포넌트에서 바로 import할 수 있습니다. TypeScript 타입 정의를 함께 제공합니다.
 ---

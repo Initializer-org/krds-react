@@ -113,13 +113,14 @@ const Trigger = forwardRef<HTMLButtonElement, { label?: string; className?: stri
       variant="text"
       size="small"
       onClick={() => setOpen(!open)}
-      aria-label={label}
       aria-expanded={open}
       aria-controls="language-dropdown"
       aria-haspopup="listbox"
       className={classNames('drop-btn', open && 'active', className)}
     >
       <i className="svg-icon ico-global"></i>
+      {/* 원본은 aria-label={label}('Language')로 보이는 현재 언어를 이름에서 뺐다. 화면 글자가 이름에 들어가도록 숨긴 글자로 앞에 붙인다 */}
+      <span className="sr-only">{label} </span>
       {' ' + currentLabel + ' '}
       <i className="svg-icon ico-angle"></i>
     </Button>

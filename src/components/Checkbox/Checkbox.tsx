@@ -1,6 +1,6 @@
 import { useUncontrolled } from '@/hooks/use-uncontrolled'
 import { classNames } from '@/utils'
-import React, { forwardRef, useState } from 'react'
+import React, { forwardRef, useId, useState } from 'react'
 import { CheckboxChipProps, CheckboxGroupProps, CheckboxProps } from './Checkbox.types'
 
 /**
@@ -19,7 +19,8 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   ) => {
     const [_checked, setChecked] = useUncontrolled<boolean>({
       value: checked,
-      defaultValue,
+      // 기본값이 없으면 undefined로 시작해 처음 체크할 때 비제어 → 제어 입력 경고가 난다
+      defaultValue: defaultValue ?? false,
       onChange: (value: boolean) => {
         if (onChange) {
           const syntheticEvent = {
@@ -34,22 +35,26 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       setChecked(e.target.checked)
     }
 
+    // id를 주지 않아도 레이블이 연결되도록 (원본은 id가 없으면 레이블이 연결되지 않았음)
+    const generatedId = useId()
+    const inputId = id ?? generatedId
+
     const checkboxClasses = classNames('krds-form-check', size, className)
 
     return (
       <div className={checkboxClasses}>
         <input
           type="checkbox"
-          id={id}
+          id={inputId}
           name={name}
           checked={_checked}
           disabled={disabled}
           onChange={handleChange}
           ref={ref}
-          aria-label={label || '레이블'}
           {...props}
         />
-        <label htmlFor={id}>{children || label}</label>
+        {/* 이름은 연결된 레이블에서 온다 (원본은 aria-label={label || '레이블'}로 children 레이블을 '레이블'로 덮었음) */}
+        <label htmlFor={inputId}>{children || label}</label>
         {description && (
           <div className="krds-form-check-cnt">
             <p className="krds-form-check-p">{description}</p>
@@ -75,9 +80,13 @@ const CheckboxChip = forwardRef<HTMLInputElement, CheckboxChipProps>(
 
     const checkboxClasses = classNames('krds-form-chip', size, isFocused && 'focus', className)
 
+    // id를 주지 않아도 레이블이 연결되도록 (원본은 id가 없으면 레이블이 연결되지 않았음)
+    const generatedId = useId()
+    const inputId = id ?? generatedId
+
     const [_checked, setChecked] = useUncontrolled<boolean>({
       value: checked,
-      defaultValue: defaultValue as unknown as boolean,
+      defaultValue: (defaultValue as unknown as boolean | undefined) ?? false,
       onChange: (value: boolean) => {
         if (onChange) {
           const syntheticEvent = {
@@ -105,7 +114,7 @@ const CheckboxChip = forwardRef<HTMLInputElement, CheckboxChipProps>(
         <input
           type="checkbox"
           className="checkbox"
-          id={id}
+          id={inputId}
           name={name}
           checked={_checked}
           disabled={disabled}
@@ -115,7 +124,7 @@ const CheckboxChip = forwardRef<HTMLInputElement, CheckboxChipProps>(
           ref={ref}
           {...props}
         />
-        <label className="krds-form-chip-outline" htmlFor={id}>
+        <label className="krds-form-chip-outline" htmlFor={inputId}>
           {children}
         </label>
       </div>
