@@ -4,6 +4,7 @@ import { defineConfig, postcssIsolateStyles } from 'vitepress'
 import type { HeadConfig, MarkdownRenderer } from 'vitepress'
 import { componentGroups, krdsGuides } from './component-groups.ts'
 import { pageDescription } from './pages.ts'
+import { documentationHead, documentationTitle } from './seo.ts'
 
 const root = resolve(import.meta.dirname, '../..')
 const { version } = JSON.parse(readFileSync(resolve(root, 'package.json'), 'utf-8')) as { version: string }
@@ -11,9 +12,6 @@ const { version } = JSON.parse(readFileSync(resolve(root, 'package.json'), 'utf-
 const siteUrl = 'https://react.krds.initializer.org'
 const siteDescription =
   'KRDS 공식 디자인을 기반으로 접근성 오류와 React 호환성을 개선한 컴포넌트 라이브러리입니다. Next.js App Router 지원과 TypeScript API, 검증된 예제를 제공합니다.'
-
-/** 페이지 URL (cleanUrls 기준) */
-const pageUrl = (relativePath: string) => `${siteUrl}/${relativePath.replace(/(^|\/)index\.md$/, '$1').replace(/\.md$/, '')}`
 
 /**
  * 컴포넌트 문서의 '## API' 제목을 경계로 개요 / API 레퍼런스 탭 패널을 일반 HTML로 감싼다 (DocTabs는 탭 목록만 그림).
@@ -75,7 +73,7 @@ export default defineConfig({
   sitemap: {
     hostname: siteUrl,
     // iframe 예제 페이지는 검색 대상에서 제외
-    transformItems: items => items.filter(item => !item.url.startsWith('frame/'))
+    transformItems: items => items.filter(item => !item.url.startsWith('frame/') && !/^404(?:\.html)?$/.test(item.url))
   },
   head: [
     ['link', { rel: 'icon', type: 'image/svg+xml', sizes: 'any', href: '/favicon.svg' }],
@@ -97,21 +95,6 @@ export default defineConfig({
     ['meta', { property: 'og:image:height', content: '630' }],
     ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
     ['meta', { name: 'twitter:image', content: `${siteUrl}/og-image.png` }],
-    [
-      'script',
-      { type: 'application/ld+json' },
-      JSON.stringify({
-        '@context': 'https://schema.org',
-        '@type': 'SoftwareSourceCode',
-        name: 'KRDS React',
-        description: siteDescription,
-        url: siteUrl,
-        codeRepository: 'https://github.com/Initializer-org/krds-react',
-        programmingLanguage: ['TypeScript', 'React'],
-        runtimePlatform: 'React',
-        license: 'https://opensource.org/licenses/ISC'
-      })
-    ],
     // VitePress 다크 모드를 KRDS 고대비 모드로 연결
     [
       'script',
@@ -124,28 +107,38 @@ export default defineConfig({
       })()`
     ]
   ],
-  // 페이지별 설명: frontmatter description이 없으면 제목 다음 첫 문단(컴포넌트 설명)을 쓴다
+  // frontmatter.head에 저장해야 SPA 화면 이동에서도 canonical과 JSON-LD가 함께 갱신된다.
   transformPageData(pageData, { siteConfig }) {
-    if (pageData.frontmatter.description || pageData.relativePath.startsWith('frame/')) return
-    const description = pageDescription(resolve(siteConfig.srcDir, pageData.relativePath))
-    if (description) pageData.description = description
+    if (!pageData.frontmatter.description && !pageData.relativePath.startsWith('frame/')) {
+      const description = pageDescription(resolve(siteConfig.srcDir, pageData.relativePath))
+      if (description)
+        pageData.description = pageData.relativePath.startsWith('components/')
+          ? `KRDS React의 ${pageData.title}. ${description}`
+          : description
+    }
+    pageData.frontmatter.head = [
+      ...(pageData.frontmatter.head ?? []),
+      ...documentationHead({
+        siteUrl,
+        siteName: 'KRDS React',
+        siteDescription,
+        framework: 'React',
+        version,
+        license: 'ISC',
+        repository: 'https://github.com/Initializer-org/krds-react',
+        pageData,
+        title: documentationTitle(pageData, siteConfig.site.title, siteConfig.site.titleTemplate),
+        description: pageData.description || siteDescription
+      })
+    ]
   },
-  transformHead({ pageData, title, description, assets }) {
-    // KRDS 글꼴은 CSS를 읽은 뒤에야 받기 시작해 첫 화면이 시스템 글꼴로 그려졌다가 바뀌므로 미리 받는다
-    const fonts = assets
+  transformHead({ pageData, assets }) {
+    // 기본 404는 transformPageData를 거치지 않는 VitePress 가상 페이지다.
+    if (pageData.relativePath === '404.md') return [['meta', { name: 'robots', content: 'noindex, follow' }]]
+    // KRDS 글꼴은 CSS를 읽기 전에 미리 받는다.
+    return assets
       .filter(file => /\/PretendardGOV-[\w.-]+\.woff2$/.test(file))
       .map((href): HeadConfig => ['link', { rel: 'preload', href, as: 'font', type: 'font/woff2', crossorigin: '' }])
-    if (pageData.relativePath.startsWith('frame/')) return [...fonts, ['meta', { name: 'robots', content: 'noindex' }]]
-    const url = pageUrl(pageData.relativePath)
-    return [
-      ...fonts,
-      ['link', { rel: 'canonical', href: url }],
-      ['meta', { property: 'og:url', content: url }],
-      ['meta', { property: 'og:title', content: title }],
-      ['meta', { property: 'og:description', content: description }],
-      ['meta', { name: 'twitter:title', content: title }],
-      ['meta', { name: 'twitter:description', content: description }]
-    ]
   },
   themeConfig: {
     logo: { light: '/logo.svg', dark: '/logo-dark.svg', alt: '' },
@@ -163,6 +156,7 @@ export default defineConfig({
         text: '가이드',
         items: [
           { text: '시작하기', link: '/guide/getting-started' },
+          { text: '자주 묻는 질문', link: '/guide/faq' },
           { text: '컴포넌트 목록', link: '/components/' }
         ]
       },

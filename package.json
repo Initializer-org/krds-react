@@ -65,7 +65,8 @@
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs",
-    "prepublishOnly": "pnpm run build"
+    "prepublishOnly": "pnpm run build",
+    "docs:seo": "node scripts/check-docs-seo.mjs"
   },
   "peerDependencies": {
     "react": ">=18.2.0",
