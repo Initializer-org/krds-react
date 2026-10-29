@@ -1,4 +1,9 @@
-# 시작하기
+---
+title: KRDS React 설치와 시작하기
+description: '@krds.ui/react 설치, React 18.2 이상 요구사항, CSS import, Next.js App Router 연결 방법을 코드 예제로 안내합니다.'
+---
+
+# KRDS React 설치와 시작하기
 
 KRDS React는 [KRDS(대한민국 정부 디자인 시스템)](https://www.krds.go.kr/html/site/index.html) 공식 React 패키지 [krds-react](https://www.npmjs.com/package/krds-react) 1.1.1(ISC)의 디자인과 컴포넌트 API를 기반으로, 접근성 오류와 React 18 Modal 문제를 수정하고 Next.js·TypeScript 연결을 보완한 라이브러리입니다. 구체적인 차이는 [공식 패키지에서 개선한 점](/#improvements)을 참고하세요.
 
@@ -80,3 +85,5 @@ krds-react CSS는 글꼴로 Pretendard GOV를 지정하지만 글꼴 파일은 �
 ## 원본과의 차이
 
 공식 krds-react에서 고친 접근성·호환성 문제와 추가 export는 저장소의 [포팅 기록](https://github.com/Initializer-org/krds-react/blob/main/PORTING.md)에 정리했습니다.
+
+설치 패키지 선택, Next.js 이벤트 처리, 접근성 검증 범위는 [자주 묻는 질문](/guide/faq)에서 확인할 수 있습니다.

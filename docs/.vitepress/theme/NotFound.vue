@@ -1,11 +1,21 @@
 <script setup lang="ts">
   import { useRoute } from 'vitepress'
-  import { computed } from 'vue'
+  import { computed, onMounted, onUnmounted } from 'vue'
 
   /** 없는 페이지. 프레임워크 전환으로 KRDS Vue에만 있는 컴포넌트 문서에서 넘어온 경우는 Vue 문서의 같은 페이지로 안내한다 */
   const vueUrl = 'https://krds.initializer.org'
   const route = useRoute()
   const isComponent = computed(() => route.path.startsWith('/components/'))
+
+  // 정적 404의 noindex를 인계받고, SPA로 정상 문서에 돌아가면 제거한다.
+  let robots: HTMLMetaElement | undefined
+  onMounted(() => {
+    robots = document.head.querySelector<HTMLMetaElement>('meta[name="robots"]') ?? document.createElement('meta')
+    robots.name = 'robots'
+    robots.content = 'noindex, follow'
+    document.head.appendChild(robots)
+  })
+  onUnmounted(() => robots?.remove())
 </script>
 
 <template>
