@@ -7,5 +7,5 @@
   "arrowParens": "avoid",
   "vueIndentScriptAndStyle": true,
   "sortPackageJson": false,
-  "ignorePatterns": ["pnpm-lock.yaml", "public/index.css", "docs/.vitepress/cache", "docs/.vitepress/dist"]
+  "ignorePatterns": ["pnpm-lock.yaml", "CHANGELOG.md", "public/index.css", "docs/.vitepress/cache", "docs/.vitepress/dist"]
 }
