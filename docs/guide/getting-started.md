@@ -77,4 +77,4 @@ krds-react CSS는 글꼴로 Pretendard GOV를 지정하지만 글꼴 파일은 �
 
 ## 알려진 문제
 
-원본 krds-react에서 고친 접근성 문제는 저장소 [README의 원본과 다른 점](https://github.com/Initializer-org/krds-react#원본과-다른-점), 아직 남은 문제는 [알려진 문제](https://github.com/Initializer-org/krds-react#알려진-문제)에 정리했습니다.
+원본 krds-react에서 고친 접근성 문제는 저장소 [포팅 기록의 원본과 다른 점](https://github.com/Initializer-org/krds-react/blob/main/PORTING.md#원본과-다른-점), 아직 남은 문제는 [알려진 문제](https://github.com/Initializer-org/krds-react/blob/main/PORTING.md#알려진-문제)에 정리했습니다.
