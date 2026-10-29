@@ -11,16 +11,33 @@ import {
   RadioGroup,
   Select,
   StepIndicator,
-  TextInput
+  TextInput,
+  Tag,
+  TagWrap,
+  type SelectOption,
+  type BreadcrumbItem,
+  type StepItem,
+  type TextInputProps
 } from '@krds.ui/react'
 import './App.css'
 
-const purposes = [
+const purposes: SelectOption[] = [
   { value: '', label: '선택' },
   { value: 'bank', label: '금융기관 제출용' },
   { value: 'office', label: '관공서 제출용' },
   { value: 'etc', label: '기타' }
 ]
+
+const breadcrumbs: BreadcrumbItem[] = [
+  { text: '홈', href: '#' },
+  { text: '민원 신청', href: '#apply' }
+]
+const steps: StepItem[] = [
+  { step: '1단계', title: '신청 정보 입력' },
+  { step: '2단계', title: '본인 인증' },
+  { step: '3단계', title: '신청 완료' }
+]
+const nameInput: TextInputProps = { label: '신청인 이름', placeholder: '홍길동', required: true }
 
 /** 민원 신청 화면: 공식 배너·브레드크럼·단계 표시기·입력·셀렉트·날짜 입력·라디오·체크박스·모달 */
 export default function App() {
@@ -37,24 +54,16 @@ export default function App() {
     <>
       <Masthead text="이 누리집은 대한민국 공식 전자정부 누리집입니다." />
       <main className="page">
-        <Breadcrumb
-          items={[
-            { text: '홈', href: '#' },
-            { text: '민원 신청', href: '#apply' }
-          ]}
-        />
+        <Breadcrumb items={breadcrumbs} />
         <h1>주민등록표 등본 발급 신청</h1>
-        <StepIndicator
-          currentStep={0}
-          steps={[
-            { step: '1단계', title: '신청 정보 입력' },
-            { step: '2단계', title: '본인 인증' },
-            { step: '3단계', title: '신청 완료' }
-          ]}
-        />
+        <TagWrap size="small">
+          <Tag>민원 신청</Tag>
+          <Tag>주민등록</Tag>
+        </TagWrap>
+        <StepIndicator currentStep={0} steps={steps} />
 
         <form className="form" onSubmit={submit}>
-          <TextInput label="신청인 이름" placeholder="홍길동" value={name} onChange={setName} required />
+          <TextInput {...nameInput} value={name} onChange={setName} />
           <Select id="purpose" label="발급 용도" options={purposes} />
           <DateInput label="희망 수령일" />
           <RadioGroup name="auth" defaultValue="phone" column>

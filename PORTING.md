@@ -21,17 +21,11 @@
 
 - `Checkbox`, `CheckboxChip`: 기본값 없이 쓰면 처음 체크할 때 비제어 → 제어 입력 경고가 나던 것을, 기본 체크 상태를 `false`로 두어 고쳤습니다.
 
-## 알려진 문제
+## 0.1.1에서 수정한 호환성과 export
 
-원본 krds-react에서 온 문제 중 아직 고치지 않은 것입니다.
-
-**API**
-
-- `TagWrap`(태그 묶음), `HelpPanel` 하위 컴포넌트, `SelectOption`·`StepItem`·`BreadcrumbItem` 같은 props 타입이 패키지 최상위에서 export되지 않아 쓸 수 없습니다. 태그는 `TagWrap`과 같은 마크업(`<div className="krds-tag-wrap">`)을 직접 써야 스타일이 적용됩니다.
-
-**React**
-
-- `Modal`: 콜백 ref가 정리 함수를 반환합니다(React 19 기능). React 18에서는 경고가 나고 정리 함수가 실행되지 않습니다.
+- `Modal`: React 18에서도 observer·animation frame·포커스 타이머가 정리되도록 ref 콜백의 작업을 effect로 옮겼습니다. 열린 모달을 unmount해도 배경의 `inert`·스크롤 잠금·포커스를 복원합니다.
+- `TagWrap`, `BadgeWrapper`, `TextListItem`, `CriticalAlerts`와 HelpPanel 하위 컴포넌트를 패키지 최상위에서 export합니다.
+- `SelectOption`, `StepItem`, `BreadcrumbItem`, `TextInputProps` 등 컴포넌트 모듈에 이미 있던 공개 타입을 패키지 최상위에서도 가져올 수 있습니다.
 
 ## 원본 코드와 자산
 

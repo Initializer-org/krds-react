@@ -118,7 +118,7 @@ const ModalContent = forwardRef<HTMLDivElement, ModalContentProps>(({ className 
 
   const contentRef = useRef<HTMLDivElement | null>(null)
   const dialogRef = useRef<HTMLDivElement | null>(null)
-  const previousFocused = useRef<HTMLElement | null>(null)
+  const [contentNode, setContentNode] = useState<HTMLDivElement | null>(null)
   const focusableElements = useRef<HTMLElement[]>([])
   const isInitialized = useRef(false)
   const openTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
@@ -176,28 +176,38 @@ const ModalContent = forwardRef<HTMLDivElement, ModalContentProps>(({ className 
       }
       contentRef.current = node
 
-      if (node && open) {
-        const observer = new MutationObserver(() => {
-          setInitialFocus()
-          observer.disconnect()
-        })
-
-        observer.observe(node, {
-          attributes: true,
-          attributeFilter: ['tabindex'],
-          subtree: true,
-          childList: true
-        })
-
-        requestAnimationFrame(() => {
-          setInitialFocus()
-        })
-
-        return () => observer.disconnect()
-      }
+      setContentNode(node)
     },
-    [ref, open, setInitialFocus]
+    [ref]
   )
+
+  // React 18은 ref 콜백의 반환 함수를 호출하지 않으므로 effect에서 구독과 예약 작업을 정리한다.
+  useEffect(() => {
+    if (!contentNode || !open) return
+
+    const observer = new MutationObserver(() => {
+      setInitialFocus()
+      observer.disconnect()
+    })
+    observer.observe(contentNode, {
+      attributes: true,
+      attributeFilter: ['tabindex'],
+      subtree: true,
+      childList: true
+    })
+    const frame = requestAnimationFrame(setInitialFocus)
+
+    return () => {
+      observer.disconnect()
+      cancelAnimationFrame(frame)
+      if (focusTimeoutRef.current !== null) {
+        clearTimeout(focusTimeoutRef.current)
+        focusTimeoutRef.current = null
+      }
+      focusableElements.current = []
+      isInitialized.current = false
+    }
+  }, [contentNode, open, setInitialFocus])
 
   const handleDialogMount = useCallback((node: HTMLDivElement | null) => {
     dialogRef.current = node
@@ -264,26 +274,29 @@ const ModalContent = forwardRef<HTMLDivElement, ModalContentProps>(({ className 
   }, [open, closeOnEsc, setOpen])
 
   useEffect(() => {
-    if (open) {
-      document.body.classList.add('scroll-no')
-      previousFocused.current = document.activeElement as HTMLElement | null
+    if (!open) return
 
-      const wrapElement = document.getElementById('wrap')
-      if (wrapElement) {
-        wrapElement.setAttribute('inert', '')
+    const previousFocused = document.activeElement as HTMLElement | null
+    const wasScrollLocked = document.body.classList.contains('scroll-no')
+    const wrapElement = document.getElementById('wrap')
+    const wasInert = wrapElement?.hasAttribute('inert')
+    document.body.classList.add('scroll-no')
+    wrapElement?.setAttribute('inert', '')
+
+    const dialog = dialogRef.current
+    openTimeoutRef.current = setTimeout(() => {
+      dialogRef.current?.classList.add('in')
+    }, 150)
+
+    return () => {
+      if (openTimeoutRef.current !== null) {
+        clearTimeout(openTimeoutRef.current)
+        openTimeoutRef.current = null
       }
-
-      openTimeoutRef.current = setTimeout(() => {
-        dialogRef.current?.classList.add('in')
-      }, 150)
-    } else {
-      document.body.classList.remove('scroll-no')
-      previousFocused.current?.focus()
-
-      const wrapElement = document.getElementById('wrap')
-      if (wrapElement) {
-        wrapElement.removeAttribute('inert')
-      }
+      dialog?.classList.remove('in')
+      if (!wasScrollLocked) document.body.classList.remove('scroll-no')
+      if (!wasInert) wrapElement?.removeAttribute('inert')
+      previousFocused?.focus()
     }
   }, [open])
 

@@ -75,6 +75,6 @@ krds-react CSS는 글꼴로 Pretendard GOV를 지정하지만 글꼴 파일은 �
 - React `>=18.2.0`
 - ESM을 지원하는 번들러
 
-## 알려진 문제
+## 원본과의 차이
 
-원본 krds-react에서 고친 접근성 문제는 저장소 [포팅 기록의 원본과 다른 점](https://github.com/Initializer-org/krds-react/blob/main/PORTING.md#원본과-다른-점), 아직 남은 문제는 [알려진 문제](https://github.com/Initializer-org/krds-react/blob/main/PORTING.md#알려진-문제)에 정리했습니다.
+공식 krds-react에서 고친 접근성·호환성 문제와 추가 export는 저장소의 [포팅 기록](https://github.com/Initializer-org/krds-react/blob/main/PORTING.md)에 정리했습니다.

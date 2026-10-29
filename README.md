@@ -74,7 +74,7 @@ React `>=18.2.0`과 ESM을 지원하는 번들러가 필요합니다(CommonJS `r
 
 공식 `krds-react@1.1.1`(ISC)을 기준으로 합니다. 원본과의 차이와 남아 있는 제약은 [포팅 기록](./PORTING.md)에 있습니다.
 
-React 18에서는 `Modal`의 콜백 ref 관련 경고와 정리 함수가 실행되지 않는 문제가 남아 있습니다. 일부 하위 컴포넌트와 props 타입도 패키지 최상위에서 export되지 않습니다. 자세한 내용은 [알려진 문제](./PORTING.md#알려진-문제)를 참고하세요.
+`0.1.1`에서 React 18의 Modal 정리 문제와 누락된 컴포넌트·타입 export를 수정했습니다. 변경 내역은 [릴리스](https://github.com/Initializer-org/krds-react/releases)를 참고하세요.
 
 ## 기여하기
 
