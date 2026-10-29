@@ -1,6 +1,8 @@
 # 시작하기
 
-KRDS React는 [KRDS(대한민국 정부 디자인 시스템)](https://www.krds.go.kr/html/site/index.html) 공식 React 패키지 [krds-react](https://www.npmjs.com/package/krds-react) 1.1.1(ISC)을 포팅한 컴포넌트 라이브러리입니다. 이 패키지는 **ESM 전용**이며 CommonJS `require()`는 지원하지 않습니다.
+KRDS React는 [KRDS(대한민국 정부 디자인 시스템)](https://www.krds.go.kr/html/site/index.html) 공식 React 패키지 [krds-react](https://www.npmjs.com/package/krds-react) 1.1.1(ISC)의 디자인과 컴포넌트 API를 기반으로, 접근성 오류와 React 18 Modal 문제를 수정하고 Next.js·TypeScript 연결을 보완한 라이브러리입니다. 구체적인 차이는 [공식 패키지에서 개선한 점](/#improvements)을 참고하세요.
+
+이 패키지는 **ESM 전용**이며 CommonJS `require()`는 지원하지 않습니다.
 
 ## 설치
 

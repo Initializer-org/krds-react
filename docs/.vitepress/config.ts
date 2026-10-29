@@ -1,3 +1,4 @@
+import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { defineConfig, postcssIsolateStyles } from 'vitepress'
 import type { HeadConfig, MarkdownRenderer } from 'vitepress'
@@ -5,10 +6,11 @@ import { componentGroups, krdsGuides } from './component-groups.ts'
 import { pageDescription } from './pages.ts'
 
 const root = resolve(import.meta.dirname, '../..')
+const { version } = JSON.parse(readFileSync(resolve(root, 'package.json'), 'utf-8')) as { version: string }
 
 const siteUrl = 'https://react.krds.initializer.org'
 const siteDescription =
-  'KRDS 공식 krds-react를 포팅한 React 컴포넌트 라이브러리 문서입니다. 공공 웹서비스를 위한 폼, 내비게이션, 레이아웃, 피드백 UI 예제와 API를 제공합니다.'
+  'KRDS 공식 디자인을 기반으로 접근성 오류와 React 호환성을 개선한 컴포넌트 라이브러리입니다. Next.js App Router 지원과 TypeScript API, 검증된 예제를 제공합니다.'
 
 /** 페이지 URL (cleanUrls 기준) */
 const pageUrl = (relativePath: string) => `${siteUrl}/${relativePath.replace(/(^|\/)index\.md$/, '$1').replace(/\.md$/, '')}`
@@ -153,7 +155,8 @@ export default defineConfig({
       // KRDS Vue · React · Angular 전환 (theme/FrameworkSwitch.vue)
       { component: 'FrameworkSwitch', props: { current: 'react' } },
       { text: '시작하기', link: '/guide/getting-started' },
-      { text: '컴포넌트', link: '/components/' }
+      { text: '컴포넌트', link: '/components/' },
+      { text: `v${version}`, link: 'https://github.com/Initializer-org/krds-react/blob/main/CHANGELOG.md' }
     ],
     sidebar: [
       {
@@ -169,7 +172,10 @@ export default defineConfig({
         items: group.pages.map(([name, slug]) => ({ text: name, link: `/components/${slug}` }))
       }))
     ],
-    socialLinks: [{ icon: 'github', link: 'https://github.com/Initializer-org/krds-react' }],
+    socialLinks: [
+      { icon: 'github', link: 'https://github.com/Initializer-org/krds-react' },
+      { icon: 'npm', link: 'https://www.npmjs.com/package/@krds.ui/react' }
+    ],
     editLink: {
       pattern: 'https://github.com/Initializer-org/krds-react/edit/main/docs/:path',
       text: '이 페이지 수정하기'
