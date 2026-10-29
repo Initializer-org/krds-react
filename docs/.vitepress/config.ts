@@ -150,7 +150,7 @@ export default defineConfig({
     // 새 창으로 여는 본문 링크에 ↗ 표시 (예제 영역 .vp-raw는 격리돼 붙지 않음)
     externalLinkIcon: true,
     nav: [
-      // KRDS Vue ↔ React 전환 (theme/FrameworkSwitch.vue)
+      // KRDS Vue · React · Angular 전환 (theme/FrameworkSwitch.vue)
       { component: 'FrameworkSwitch', props: { current: 'react' } },
       { text: '시작하기', link: '/guide/getting-started' },
       { text: '컴포넌트', link: '/components/' }
@@ -205,6 +205,7 @@ export default defineConfig({
         ['GitHub', 'https://github.com/Initializer-org/krds-react'],
         ['공식 krds-react', 'https://www.npmjs.com/package/krds-react'],
         ['KRDS Vue', 'https://krds.initializer.org'],
+        ['KRDS Angular', 'https://angular.krds.initializer.org'],
         ['KRDS 공식 사이트', 'https://www.krds.go.kr']
       ]
         .map(([text, href]) => `<a href="${href}">${text}</a>`)
