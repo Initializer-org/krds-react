@@ -1,6 +1,6 @@
 {
   "name": "@krds.ui/react",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "대한민국 정부 디자인 시스템(KRDS) React 컴포넌트 라이브러리 - 공식 krds-react 1.1.1 포팅, 접근성 수정·자동 검사, Next.js App Router 지원",
   "keywords": [
     "krds",
