@@ -1,3 +1,6 @@
 # pnpm 설정 (pnpm 11부터 .npmrc 대신 여기서 관리)
 allowBuilds:
   esbuild: true
+overrides:
+  # GHSA-g3hv-75wg-m249: API Extractor의 취약한 glob 패턴 처리 버전 교체
+  'minimatch@>=10 <11.0.1': 11.0.1
