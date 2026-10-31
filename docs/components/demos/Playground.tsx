@@ -57,13 +57,19 @@ export default function Playground() {
               KRDS React 문서로 돌아가기
             </a>
           </Header.Utilities>
-          <Header.Branding logoHref="/playground" logoAltText="KRDS React 예시 누리집">
+          <div className="header-branding">
+            <h2 className="logo">
+              <a className="pg-brand" href="/playground">
+                <img src="/logo.svg" alt="" width={48} height={48} />
+                <span>KRDS React</span>
+              </a>
+            </h2>
             <Header.Navi>
               <a href="/components/" className="btn-navi sch">
                 컴포넌트 찾기
               </a>
             </Header.Navi>
-          </Header.Branding>
+          </div>
         </Header.Container>
         <Header.MainMenu
           desktop={{
