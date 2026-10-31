@@ -25,6 +25,8 @@
 <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
 <a href="https://react.krds.initializer.org/components/">컴포넌트</a>
 <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
+<a href="https://react.krds.initializer.org/playground">플레이그라운드</a>
+<span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
 <a href="https://www.npmjs.com/package/@krds.ui/react">npm: @krds.ui/react</a>
 <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
 <a href="https://www.npmjs.com/package/krds-react">공식 krds-react</a>

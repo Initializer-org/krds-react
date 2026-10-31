@@ -150,6 +150,7 @@ export default defineConfig({
       { component: 'FrameworkSwitch', props: { current: 'react' } },
       { text: '시작하기', link: '/guide/getting-started' },
       { text: '컴포넌트', link: '/components/' },
+      { text: '플레이그라운드', link: '/playground' },
       { text: `v${version}`, link: 'https://github.com/Initializer-org/krds-react/blob/main/CHANGELOG.md' }
     ],
     sidebar: [

@@ -13,12 +13,14 @@
   const el = ref<HTMLElement>()
   let root: Root | undefined
   let unmounted = false
+  const loaded = ref(false)
 
   onMounted(async () => {
     const { default: Demo } = await demos[`../../components/demos/${props.name}.tsx`]()
     if (unmounted) return
     root = createRoot(el.value!)
     root.render(createElement(Demo))
+    loaded.value = true
   })
   onBeforeUnmount(() => {
     unmounted = true
@@ -27,5 +29,6 @@
 </script>
 
 <template>
+  <slot v-if="!loaded" />
   <div ref="el"></div>
 </template>
