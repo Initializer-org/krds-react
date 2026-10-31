@@ -150,3 +150,8 @@ body:has(.krds-playground) {
     display: none;
   }
 }
+
+/* 기본 푸터 배경 로고와 지정한 서비스 로고가 겹치지 않도록 한다. */
+.krds-playground #krds-footer .f-logo {
+  background: none !important;
+}
