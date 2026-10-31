@@ -11,9 +11,25 @@ KRDS React는 Initializer Team이 유지보수하는 `@krds.ui/react`입니다. 
 
 아닙니다. 정부 디자인 시스템의 공식 패키지는 [`krds-react`](https://www.npmjs.com/package/krds-react)이며, 이 문서는 [`@krds.ui/react`](https://www.npmjs.com/package/@krds.ui/react)를 설명합니다. 원본과의 차이와 수정 근거는 [포팅 기록](https://github.com/Initializer-org/krds-react/blob/main/PORTING.md)에 정리되어 있습니다.
 
+## krds-react와 @krds.ui/react는 같은 패키지인가요? {#package-names}
+
+서로 다른 npm 패키지입니다. 이 문서에서 사용하는 패키지는 Initializer Team의 [`@krds.ui/react`](https://www.npmjs.com/package/@krds.ui/react)이며 설치 명령은 `npm install @krds.ui/react`입니다. [`krds-react`](https://www.npmjs.com/package/krds-react)는 포팅의 기반이 된 공식 React 패키지입니다. `Initializer-org/krds-react`는 이 프로젝트의 GitHub 저장소 이름입니다. 공식 `krds-react@1.1.1`에서 수정한 접근성·Modal·공개 API 문제는 [개선 사항](/#improvements)과 [포팅 기록](https://github.com/Initializer-org/krds-react/blob/main/PORTING.md)에서 확인하세요.
+
+## Vue·React·Angular 중 어떤 패키지를 선택하나요? {#framework-packages}
+
+Initializer Team의 KRDS 라이브러리는 프레임워크별로 별도 배포됩니다. 프로젝트에 사용하는 프레임워크에 맞는 패키지를 선택하세요.
+
+| 프레임워크 | npm 패키지                                                           | 설치 명령                      | 문서                                                                       |
+| ---------- | -------------------------------------------------------------------- | ------------------------------ | -------------------------------------------------------------------------- |
+| Vue        | [`@krds.ui/vue`](https://www.npmjs.com/package/@krds.ui/vue)         | `npm install @krds.ui/vue`     | [KRDS Vue](https://krds.initializer.org/guide/getting-started)             |
+| React      | [`@krds.ui/react`](https://www.npmjs.com/package/@krds.ui/react)     | `npm install @krds.ui/react`   | [KRDS React](https://react.krds.initializer.org/guide/getting-started)     |
+| Angular    | [`@krds.ui/angular`](https://www.npmjs.com/package/@krds.ui/angular) | `npm install @krds.ui/angular` | [KRDS Angular](https://angular.krds.initializer.org/guide/getting-started) |
+
+세 패키지는 각각의 프레임워크 API를 사용합니다. 설치 이름과 import 경로도 선택한 패키지에 맞춰야 합니다.
+
 ## 어떤 패키지를 설치하고 어떤 React 버전을 써야 하나요? {#installation}
 
-`pnpm add @krds.ui/react`로 설치합니다. `react`와 `react-dom`은 모두 18.2.0 이상이어야 합니다. 패키지는 ESM 전용이므로 CommonJS `require()`로 불러올 수 없습니다. 전체 설정과 첫 컴포넌트 예제는 [시작하기](/guide/getting-started)에서 확인하세요.
+`npm install @krds.ui/react` 또는 `pnpm add @krds.ui/react`로 설치합니다. `react`와 `react-dom`은 모두 18.2.0 이상이어야 합니다. 패키지는 ESM 전용이므로 CommonJS `require()`로 불러올 수 없습니다. 전체 설정과 첫 컴포넌트 예제는 [시작하기](/guide/getting-started)에서 확인하세요.
 
 ## Next.js App Router에서 사용할 수 있나요? {#nextjs}
 

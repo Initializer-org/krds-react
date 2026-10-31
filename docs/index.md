@@ -1,6 +1,6 @@
 ---
 layout: home
-title: KRDS React
+title: KRDS React (@krds.ui/react)
 titleTemplate: 대한민국 정부 디자인 시스템 React 컴포넌트 라이브러리
 description: 'Initializer Team의 @krds.ui/react 문서입니다. 공식 krds-react 기반의 접근성·React 호환성 개선, React 18.2 이상 설치, Next.js 연결과 컴포넌트 API를 안내합니다.'
 
@@ -31,6 +31,12 @@ features:
 ## KRDS React는 무엇인가요? {#about}
 
 KRDS React(`@krds.ui/react`)는 Initializer Team이 공식 `krds-react@1.1.1`을 기반으로 접근성과 React 호환성을 보완한 커뮤니티 라이브러리입니다. 정부가 배포하는 공식 패키지와는 별도로 유지보수합니다. React·React DOM 18.2.0 이상과 ESM 환경에서 사용할 수 있으며 ISC 라이선스로 배포됩니다.
+
+```sh
+npm install @krds.ui/react
+```
+
+[npm: @krds.ui/react](https://www.npmjs.com/package/@krds.ui/react) · [소스: Initializer-org/krds-react](https://github.com/Initializer-org/krds-react) · [패키지 이름 구분하기](/guide/faq#package-names)
 
 [설치와 Next.js 설정](/guide/getting-started), [컴포넌트별 예제와 API](/components/), [자주 묻는 질문](/guide/faq)에서 적용 방법을 확인하세요.
 

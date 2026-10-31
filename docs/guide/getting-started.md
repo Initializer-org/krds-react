@@ -5,20 +5,22 @@ description: '@krds.ui/react 설치, React 18.2 이상 요구사항, CSS import,
 
 # KRDS React 설치와 시작하기
 
-KRDS React는 [KRDS(대한민국 정부 디자인 시스템)](https://www.krds.go.kr/html/site/index.html) 공식 React 패키지 [krds-react](https://www.npmjs.com/package/krds-react) 1.1.1(ISC)의 디자인과 컴포넌트 API를 기반으로, 접근성 오류와 React 18 Modal 문제를 수정하고 Next.js·TypeScript 연결을 보완한 라이브러리입니다. 구체적인 차이는 [공식 패키지에서 개선한 점](/#improvements)을 참고하세요.
+KRDS React(`@krds.ui/react`)는 [KRDS(대한민국 정부 디자인 시스템)](https://www.krds.go.kr/html/site/index.html) 공식 React 패키지 [krds-react](https://www.npmjs.com/package/krds-react) 1.1.1(ISC)의 디자인과 컴포넌트 API를 기반으로, 접근성 오류와 React 18 Modal 문제를 수정하고 Next.js·TypeScript 연결을 보완한 라이브러리입니다. 구체적인 차이는 [공식 패키지에서 개선한 점](/#improvements)을 참고하세요.
 
 이 패키지는 **ESM 전용**이며 CommonJS `require()`는 지원하지 않습니다.
 
 ## 설치
 
-::: code-group
+설치할 npm 패키지는 Initializer Team의 [`@krds.ui/react`](https://www.npmjs.com/package/@krds.ui/react)입니다. GitHub 저장소 이름 `Initializer-org/krds-react`와 구분해서 사용하세요. [원본과의 관계와 패키지 이름](/guide/faq#package-names)을 확인할 수 있습니다.
 
-```sh [pnpm]
-pnpm add @krds.ui/react
-```
+::: code-group
 
 ```sh [npm]
 npm install @krds.ui/react
+```
+
+```sh [pnpm]
+pnpm add @krds.ui/react
 ```
 
 ```sh [yarn]

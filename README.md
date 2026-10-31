@@ -25,6 +25,8 @@
 <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
 <a href="https://react.krds.initializer.org/components/">컴포넌트</a>
 <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
+<a href="https://www.npmjs.com/package/@krds.ui/react">npm: @krds.ui/react</a>
+<span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
 <a href="https://www.npmjs.com/package/krds-react">공식 krds-react</a>
 <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
 <a href="https://krds.initializer.org/">KRDS Vue</a>
@@ -33,6 +35,8 @@
 <hr />
 
 ## KRDS React: 대한민국 정부 디자인 시스템을 React로
+
+**KRDS React의 npm 패키지는 [`@krds.ui/react`](https://www.npmjs.com/package/@krds.ui/react)입니다.** [Initializer Team](https://github.com/Initializer-org)이 유지보수하는 커뮤니티 라이브러리이며, 정부가 배포하는 공식 패키지와 별도로 배포됩니다.
 
 [KRDS(대한민국 정부 디자인 시스템)](https://www.krds.go.kr/html/site/index.html)의 공식 디자인을 유지하면서, 실제 서비스에서 겪는 접근성 오류와 React 호환성 문제를 고친 컴포넌트 라이브러리입니다. 공식 [`krds-react@1.1.1`](https://www.npmjs.com/package/krds-react)(ISC)을 포팅했으며, 기존 컴포넌트·props·CSS를 기반으로 사용할 수 있습니다.
 
@@ -58,8 +62,10 @@ Next.js App Router에서 불러올 수 있도록 빌드에 `"use client"`를 선
 ## 빠른 시작
 
 ```bash
-pnpm add @krds.ui/react
+npm install @krds.ui/react
 ```
+
+pnpm을 쓰면 `pnpm add @krds.ui/react`로 설치합니다. `Initializer-org/krds-react`는 GitHub 저장소 이름이며, 설치와 import에는 `@krds.ui/react`를 사용합니다. [패키지 이름과 원본과의 관계](https://react.krds.initializer.org/guide/faq#package-names)를 참고하세요.
 
 ```tsx
 import { Button, TextInput } from '@krds.ui/react'

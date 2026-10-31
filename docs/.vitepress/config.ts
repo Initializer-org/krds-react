@@ -7,11 +7,11 @@ import { pageDescription } from './pages.ts'
 import { documentationHead, documentationTitle } from './seo.ts'
 
 const root = resolve(import.meta.dirname, '../..')
-const { version } = JSON.parse(readFileSync(resolve(root, 'package.json'), 'utf-8')) as { version: string }
+const { name: packageName, version } = JSON.parse(readFileSync(resolve(root, 'package.json'), 'utf-8')) as { name: string; version: string }
 
 const siteUrl = 'https://react.krds.initializer.org'
 const siteDescription =
-  'KRDS 공식 디자인을 기반으로 접근성 오류와 React 호환성을 개선한 컴포넌트 라이브러리입니다. Next.js App Router 지원과 TypeScript API, 검증된 예제를 제공합니다.'
+  'Initializer Team의 @krds.ui/react 문서입니다. 공식 krds-react 1.1.1을 기반으로 접근성과 React 호환성을 개선한 커뮤니티 라이브러리로, Next.js 연결과 TypeScript API를 제공합니다.'
 
 /**
  * 컴포넌트 문서의 '## API' 제목을 경계로 개요 / API 레퍼런스 탭 패널을 일반 HTML로 감싼다 (DocTabs는 탭 목록만 그림).
@@ -123,6 +123,7 @@ export default defineConfig({
         siteName: 'KRDS React',
         siteDescription,
         framework: 'React',
+        packageName,
         version,
         license: 'ISC',
         repository: 'https://github.com/Initializer-org/krds-react',
