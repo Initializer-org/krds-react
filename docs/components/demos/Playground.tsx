@@ -74,7 +74,7 @@ export default function Playground() {
         <Header.MainMenu
           desktop={{
             items: [
-              { type: 'dropdown', label: '시작하기', sections: [{ type: 'menu', label: '문서', layout: 'single-list', items: menuLinks }] },
+              { type: 'dropdown', label: '시작하기', sections: menuLinks.map(link => ({ type: 'link', ...link })) },
               {
                 type: 'dropdown',
                 label: '컴포넌트',
