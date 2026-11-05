@@ -53,8 +53,6 @@ npm install @krds.ui/react
 
 Next.js App Router에서 불러올 수 있도록 빌드에 `"use client"`를 선언하고, TypeScript의 CSS import 검사에 필요한 타입 선언도 제공합니다. 문서 예제의 axe-core 검사와 회귀 테스트를 CI에서 실행해 수정한 동작을 계속 확인합니다.
 
-[포팅 기록](https://github.com/Initializer-org/krds-react/blob/main/PORTING.md)에서 코드 수준의 차이와 원본 출처를 확인할 수 있습니다.
-
 [플레이그라운드](/playground)에서 공공서비스 화면으로 조합한 컴포넌트를 직접 사용해 보세요.
 
 ## 컴포넌트 미리보기
