@@ -86,6 +86,6 @@ krds-react CSS는 글꼴로 Pretendard GOV를 지정하지만 글꼴 파일은 �
 
 ## 원본과의 차이
 
-공식 krds-react에서 고친 접근성·호환성 문제와 추가 export는 저장소의 [포팅 기록](https://github.com/Initializer-org/krds-react/blob/main/PORTING.md)에 정리했습니다.
+공식 krds-react에서 고친 접근성·호환성 문제와 추가 export는 [개선 사항](/#improvements)에 정리했습니다.
 
 설치 패키지 선택, Next.js 이벤트 처리, 접근성 검증 범위는 [자주 묻는 질문](/guide/faq)에서 확인할 수 있습니다.

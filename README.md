@@ -59,8 +59,6 @@
 
 Next.js App Router에서 불러올 수 있도록 빌드에 `"use client"`를 선언하고, TypeScript의 CSS import 검사에 필요한 타입 선언도 제공합니다. 문서 예제의 axe-core 검사와 회귀 테스트를 CI에서 실행해 수정한 동작을 계속 확인합니다.
 
-수정한 코드와 원본과의 차이는 [포팅 기록](./PORTING.md)에 정리했습니다.
-
 ## 빠른 시작
 
 ```bash
@@ -95,7 +93,7 @@ React `>=18.2.0`과 ESM을 지원하는 번들러가 필요합니다(CommonJS `r
 
 ## 기준 버전과 호환성
 
-공식 `krds-react@1.1.1`(ISC)을 기준으로 합니다. 원본과의 차이와 남아 있는 제약은 [포팅 기록](./PORTING.md)에 있습니다.
+공식 `krds-react@1.1.1`(ISC)을 기준으로 합니다. 원본 저장소가 공개돼 있지 않아 코드는 npm에 배포된 source map과 타입 선언에서 복원했고, 스타일과 아이콘은 배포된 `dist`를 그대로 가져왔습니다.
 
 `0.1.1`에서 React 18의 Modal 정리 문제와 누락된 컴포넌트·타입 export를 수정했습니다. 변경 내역은 [릴리스](https://github.com/Initializer-org/krds-react/releases)를 참고하세요.
 

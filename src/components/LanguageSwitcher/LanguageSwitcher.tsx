@@ -59,7 +59,6 @@ export const LanguageSwitcherRoot = forwardRef<HTMLDivElement, LanguageSwitcherP
       (event: React.KeyboardEvent) => {
         if (event.key === 'Escape' && isOpen) {
           setIsOpen(false)
-          console.log(buttonRef.current)
           buttonRef.current?.focus()
         }
       },

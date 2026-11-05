@@ -9,11 +9,11 @@ KRDS React는 Initializer Team이 유지보수하는 `@krds.ui/react`입니다. 
 
 ## 정부가 배포하는 공식 React 패키지인가요? {#official-package}
 
-아닙니다. 정부 디자인 시스템의 공식 패키지는 [`krds-react`](https://www.npmjs.com/package/krds-react)이며, 이 문서는 [`@krds.ui/react`](https://www.npmjs.com/package/@krds.ui/react)를 설명합니다. 원본과의 차이와 수정 근거는 [포팅 기록](https://github.com/Initializer-org/krds-react/blob/main/PORTING.md)에 정리되어 있습니다.
+아닙니다. 정부 디자인 시스템의 공식 패키지는 [`krds-react`](https://www.npmjs.com/package/krds-react)이며, 이 문서는 [`@krds.ui/react`](https://www.npmjs.com/package/@krds.ui/react)를 설명합니다. 원본과의 차이는 [개선 사항](/#improvements)에 정리되어 있습니다.
 
 ## krds-react와 @krds.ui/react는 같은 패키지인가요? {#package-names}
 
-서로 다른 npm 패키지입니다. 이 문서에서 사용하는 패키지는 Initializer Team의 [`@krds.ui/react`](https://www.npmjs.com/package/@krds.ui/react)이며 설치 명령은 `npm install @krds.ui/react`입니다. [`krds-react`](https://www.npmjs.com/package/krds-react)는 포팅의 기반이 된 공식 React 패키지입니다. `Initializer-org/krds-react`는 이 프로젝트의 GitHub 저장소 이름입니다. 공식 `krds-react@1.1.1`에서 수정한 접근성·Modal·공개 API 문제는 [개선 사항](/#improvements)과 [포팅 기록](https://github.com/Initializer-org/krds-react/blob/main/PORTING.md)에서 확인하세요.
+서로 다른 npm 패키지입니다. 이 문서에서 사용하는 패키지는 Initializer Team의 [`@krds.ui/react`](https://www.npmjs.com/package/@krds.ui/react)이며 설치 명령은 `npm install @krds.ui/react`입니다. [`krds-react`](https://www.npmjs.com/package/krds-react)는 포팅의 기반이 된 공식 React 패키지입니다. `Initializer-org/krds-react`는 이 프로젝트의 GitHub 저장소 이름입니다. 공식 `krds-react@1.1.1`에서 수정한 접근성·Modal·공개 API 문제는 [개선 사항](/#improvements)에서 확인하세요.
 
 ## Vue·React·Angular 중 어떤 패키지를 선택하나요? {#framework-packages}
 

@@ -12,3 +12,4 @@ docs/.vitepress/dist/
 examples/*/pnpm-lock.yaml
 examples/*/package-lock.json
 examples/*/dist/
+*.tsbuildinfo
